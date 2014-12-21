@@ -1,0 +1,20 @@
+/* 
+  texts.strings
+  Medikit
+
+  Created by Alonso Vega on 8/20/13.
+  Copyright (c) 2013 tec. All rights reserved.
+*/
+
+"Times" = "%@ times";
+
+"NextButton" = "Next";
+"PrevButton" = "Previous";
+"DoneButton" = "Done";
+
+"NotificationAlertBody" = "Pending medication: %@ for %@";
+
+"AlertTitle" = "Time for your meds";
+"AlertBody" = "Medication: %@. Dosis: %@ %@. Patient: %@";
+"AlertOk" = "Done";
+"AlertSnooze" = "Snooze";
