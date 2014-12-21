@@ -32,7 +32,6 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"paciente%@",patient.name);
     [super viewDidLoad];
     
 }
