@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Medicine;
 @interface RecipeListNameTableViewController : UITableViewController
+
+@property (strong, nonatomic) Medicine *savedMedicine;
+
+@property (weak, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

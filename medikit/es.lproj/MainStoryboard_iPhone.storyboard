@@ -102,7 +102,7 @@
                                                     <connections>
                                                         <outlet property="delegate" destination="M26-EH-cd8" id="qYu-Mq-EqD"/>
                                                         <outlet property="nextField" destination="90c-Ov-bRj" id="DRT-eE-Rz8"/>
-                                                        <segue destination="bo2-gQ-kXe" kind="push" id="qR0-pr-wRa"/>
+                                                        <segue destination="bo2-gQ-kXe" kind="push" identifier="toMedicineList" id="qR0-pr-wRa"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -416,10 +416,10 @@
             </objects>
             <point key="canvasLocation" x="931" y="-602"/>
         </scene>
-        <!--Add Patient View Controller-->
+        <!--Add Medicine Table View Controller-->
         <scene sceneID="bea-n0-17L">
             <objects>
-                <tableViewController id="Hj9-dl-5Dq" customClass="AddPatientViewController" sceneMemberID="viewController">
+                <tableViewController id="Hj9-dl-5Dq" customClass="AddMedicineTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="28K-9e-U35">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

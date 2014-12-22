@@ -310,6 +310,19 @@ NSString * const TitleForUnknownPickerViewRow = @"";
     [self.currentField resignFirstResponder];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //code.tutsplus.com/tutorials/core-data-from-scratch-relationships-and-more-fetching--cms-21505
+    NSString *segueIdentifier = [segue identifier];
+    id destinationController = [segue destinationViewController];
+    
+    if ([segueIdentifier isEqualToString:@"toMedicineList"])
+    {
+        [destinationController setFetchedResultsController:self.fetchedResultsController];
+        [destinationController setManagedObjectContext:self.managedObjectContext];
+    }
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController

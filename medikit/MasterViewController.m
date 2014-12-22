@@ -107,7 +107,7 @@
     NSString *segueIdentifier = [segue identifier];
     id destinationController = [segue destinationViewController];
     
-    if ([segueIdentifier isEqualToString:@"showRecipes"])
+    if ([segueIdentifier isEqualToString:@"showRecipes"])//se perdio una s???
     {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         [destinationController setManagedObjectContext:self.managedObjectContext];

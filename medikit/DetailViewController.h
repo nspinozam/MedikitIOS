@@ -23,6 +23,7 @@ typedef enum {
                                                             UIPickerViewDelegate>
 
 @property (weak, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) Recipe *savedRecipe;
 @property (strong, nonatomic) UITextField *currentField;
 @property (nonatomic) ShowState showState;

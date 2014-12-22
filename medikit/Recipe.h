@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 
 @class Patient;
+@class Medicine;
 
 @interface Recipe : NSManagedObject
 
@@ -23,5 +24,6 @@
 @property (nonatomic, retain) NSString * durationType;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) Patient *patientParent;
+@property (nonatomic, retain) Medicine *medicineRecipe;
 
 @end

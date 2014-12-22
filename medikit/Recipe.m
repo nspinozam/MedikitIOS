@@ -8,6 +8,7 @@
 
 #import "Recipe.h"
 #import "Patient.h"
+#import "Medicine.h"
 
 
 @implementation Recipe
@@ -22,5 +23,6 @@
 @dynamic durationType;
 @dynamic name;
 @dynamic patientParent;
+@dynamic medicineRecipe;
 
 @end
