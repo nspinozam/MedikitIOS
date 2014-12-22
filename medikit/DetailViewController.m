@@ -206,7 +206,6 @@ NSString * const TitleForUnknownPickerViewRow = @"";
 {
     [self.view.window endEditing:YES];
     
-    NSLog(@"  -> Paciente: %@",self.patient.name);
     self.savedRecipe.name = _tempRecipe.name;
     self.savedRecipe.dosisStartTime = _tempRecipe.dosisStartTime;
     self.savedRecipe.dosisPerDay = _tempRecipe.dosisPerDay;

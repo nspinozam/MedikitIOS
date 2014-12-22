@@ -27,8 +27,9 @@ NSInteger const SecondsInDay = 24.0 * 60.0 * 60.0;
     [info setValue:recipeId forKey:@"Recipe"];
     
     UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.alertBody = [NSString stringWithFormat:@"Medicamento pendiente: %@ para alguien", recipe.name];
-    //notification.alertBody = [NSString stringWithFormat:NSLocalizedStringFromTable(@"NotificationAlertBody", @"texts", nil), recipe.name];//, recipe.patient
+    NSString *st= [[recipe valueForKey:@"patientParent"] valueForKey:@"name"];//Get parent name
+    NSLog(@"Nombre paciente= %@",st);
+    notification.alertBody = [NSString stringWithFormat:@"Medicamento pendiente: %@ para %@", recipe.name, st];
     notification.alertAction = @"Ver";
     notification.fireDate = fireDate;
     notification.userInfo = info;
@@ -42,10 +43,8 @@ NSInteger const SecondsInDay = 24.0 * 60.0 * 60.0;
     NSInteger daysForRecipe = [recipe.durationTotal integerValue];
     NSDate *endingDate = [recipe.dosisStartTime dateByAddingTimeInterval:(daysForRecipe *SecondsInDay)];
     if ([date compare:endingDate] == NSOrderedAscending) {
-        NSLog(@"Entra");
         return true;
     }else{
-        NSLog(@"NO entra");
         return false;
     }
     //return ([date compare:endingDate] == NSOrderedDescending);

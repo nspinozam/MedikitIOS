@@ -34,6 +34,7 @@
 		DB2F362B19ACDBCB00501B0C /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F362A19ACDBCB00501B0C /* Patient.m */; };
 		DB3F9FAF19A5099400819C52 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3F9FAE19A5099400819C52 /* TableViewController.m */; };
 		DB4397C219B610B5003606C1 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4397C119B610B5003606C1 /* Recipe.m */; };
+		F1EAC0E81A479A6C005C95CD /* RecipeListNameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAC0E71A479A6C005C95CD /* RecipeListNameTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		DB4397C019B610B5003606C1 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipe.h; path = medikit/Recipe.h; sourceTree = SOURCE_ROOT; };
 		DB4397C119B610B5003606C1 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipe.m; path = medikit/Recipe.m; sourceTree = SOURCE_ROOT; };
 		F14FFC071A3BC2D900D5D578 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		F1EAC0E61A479A6C005C95CD /* RecipeListNameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeListNameTableViewController.h; path = medikit/RecipeListNameTableViewController.h; sourceTree = SOURCE_ROOT; };
+		F1EAC0E71A479A6C005C95CD /* RecipeListNameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeListNameTableViewController.m; path = medikit/RecipeListNameTableViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 				1FFCDE1C17BBF5B6006F7FB0 /* DetailViewController.m */,
 				DB236CAA19AD35B1001AA006 /* AddPatientViewController.h */,
 				DB236CAB19AD35B1001AA006 /* AddPatientViewController.m */,
+				F1EAC0E61A479A6C005C95CD /* RecipeListNameTableViewController.h */,
+				F1EAC0E71A479A6C005C95CD /* RecipeListNameTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 				1F38DD8917BEC8F400C5CA2C /* MasterViewController.m in Sources */,
 				1F38DD8A17BEC8F400C5CA2C /* DetailViewController.m in Sources */,
 				1F38DD8B17BEC8F400C5CA2C /* AppDelegate.m in Sources */,
+				F1EAC0E81A479A6C005C95CD /* RecipeListNameTableViewController.m in Sources */,
 				1F38DD8C17BEC8F400C5CA2C /* main.m in Sources */,
 				1F2B4C0217C28D8C00408359 /* RecipeNotificationHelper.m in Sources */,
 				1F4E54C117C3E41F00D4C39C /* Medikit.xcdatamodeld in Sources */,
