@@ -15,7 +15,9 @@ typedef enum {
     FieldForInterval,
     FieldForPortionDosis,
     FieldForDuration,
-    FieldForPatientName
+    FieldForPatientName,
+    FieldForGenericName,
+    FieldForCommercialName
 } FieldForComponent;
 
 @interface SOTextField : UITextField

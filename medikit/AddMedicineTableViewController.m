@@ -7,94 +7,171 @@
 //
 
 #import "AddMedicineTableViewController.h"
+#import "Medicine.h"
+#import "SOTextField.h"
 
 @interface AddMedicineTableViewController ()
+@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+// If any data has been entered into the form
+@property (nonatomic) BOOL dataEntered;
+// Temporal recipe object to store input data before Save button is pressed
+@property (strong, nonatomic) Medicine *tempMedicine;
 
 @end
 
 @implementation AddMedicineTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+// Constants definition
+NSString * const EmptyNSStringM = @"";
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.medicineGenericName.field = FieldForGenericName;
+    self.medicineCommercialName.field = FieldForCommercialName;
+    
+    self.dataEntered = NO;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                                                           target:self
+                                                                                           action:@selector(saveRecipeAndReturnToView:)];
+    [self setSaveButtonEnabled:NO];
+    [self setFieldsEditable:YES];
+    // Create a temporal object for storing the new recipe until it's saved
+    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    _tempMedicine = [[Medicine alloc] initWithEntity:entity
+                    insertIntoManagedObjectContext:nil];}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)saveRecipeAndReturnToView:(id)sender
+{
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    Medicine *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name]
+                                                              inManagedObjectContext:context];
+    
+    _savedMedicine = newManagedObject;
+    
+    [self saveChangesAndReturnToView:sender];
+}
+
+
+- (void)setSaveButtonEnabled:(BOOL)enabled
+{
+    if (self.navigationItem.rightBarButtonItem)
+    {
+        [self.navigationItem.rightBarButtonItem setEnabled:enabled];
+    }
+}
+
+
+- (IBAction)saveChangesAndReturnToView:(id)sender
+{
+    [self.view.window endEditing:YES];
+    
+    self.savedMedicine.genericName = _tempMedicine.genericName;
+    self.savedMedicine.comercialName = _tempMedicine.comercialName;
+    
+    // Save the context.
+    NSError *error = nil;
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    if (![context save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([textField isKindOfClass:[SOTextField class]])
+    {
+        SOTextField *detailedField = (SOTextField *)textField;
+        switch (detailedField.field) {
+            case FieldForCommercialName:
+                _tempMedicine.comercialName = textField.text;
+                break;
+            case FieldForGenericName:
+            {
+                _tempMedicine.genericName = textField.text;
+            }
+            default:
+                break;
+        }
+        [self checkSaveButtonShouldAppear];
+    }
+}
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    BOOL didResign = [textField resignFirstResponder];
+    if (!didResign) return NO;
     
-    // Configure the cell...
+    if ([textField isKindOfClass:[SOTextField class]])
+    {
+        if (textField.returnKeyType == UIReturnKeyNext)
+            [[(SOTextField *)textField nextField] becomeFirstResponder];
+    }
     
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)checkSaveButtonShouldAppear
+{
+    self.dataEntered = YES;
+    if (_tempMedicine)
+    {
+        if (_tempMedicine.genericName &&
+            ![_tempMedicine.comercialName isEqualToString:EmptyNSStringM])
+        {
+            [self setSaveButtonEnabled:YES];
+        } else {
+            [self setSaveButtonEnabled:NO];
+        }
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (void)setFieldsEditable:(BOOL)editable
+{
+    self.medicineCommercialName.enabled = editable;
+    self.medicineGenericName.enabled = editable;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void)splitViewController:(UISplitViewController *)splitController
+     willHideViewController:(UIViewController *)viewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)popoverController
+{
+    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
+    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
+    self.masterPopoverController = popoverController;
 }
-*/
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)splitViewController:(UISplitViewController *)splitController
+     willShowViewController:(UIViewController *)viewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    // Called when the view is shown again in the split view, invalidating the button and popover controller.
+    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    self.masterPopoverController = nil;
 }
-*/
+
 
 @end

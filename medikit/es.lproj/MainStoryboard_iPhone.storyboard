@@ -407,7 +407,7 @@
                     <navigationItem key="navigationItem" title="Medicinas" id="fSC-HP-OdJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="c3d-GP-GdI">
                             <connections>
-                                <segue destination="Hj9-dl-5Dq" kind="push" id="WL0-ep-FLz"/>
+                                <segue destination="Hj9-dl-5Dq" kind="push" identifier="addMedicine" id="WL0-ep-FLz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -475,9 +475,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="vae-HJ-Ap7"/>
-                    <connections>
-                        <outlet property="patientNameField" destination="9p7-UO-rWZ" id="wmG-xP-qaj"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHb-z0-Hbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

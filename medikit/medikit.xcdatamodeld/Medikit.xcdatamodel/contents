@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Medicine" representedClassName="Medicine" syncable="YES">
+        <attribute name="comercialName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="genericName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipeMedicine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="medicineRecipe" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
     <entity name="Patient" representedClassName="Patient" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Recipe" inverseName="patientParent" inverseEntity="Recipe" syncable="YES"/>
@@ -14,10 +19,12 @@
         <attribute name="durationTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="durationType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="medicineRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Medicine" inverseName="recipeMedicine" inverseEntity="Medicine" syncable="YES"/>
         <relationship name="patientParent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="recipes" inverseEntity="Patient" syncable="YES"/>
     </entity>
     <elements>
         <element name="Patient" positionX="-191" positionY="198" width="128" height="73"/>
-        <element name="Recipe" positionX="160" positionY="192" width="128" height="193"/>
+        <element name="Recipe" positionX="160" positionY="192" width="128" height="28"/>
+        <element name="Medicine" positionX="-9" positionY="288" width="128" height="30"/>
     </elements>
 </model>

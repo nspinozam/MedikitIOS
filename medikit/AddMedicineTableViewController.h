@@ -11,7 +11,7 @@
 @class SOTextField;
 
 @interface AddMedicineTableViewController : UITableViewController<UISplitViewControllerDelegate,
-UITextFieldDelegate>
+                                                                    UITextFieldDelegate>
 
 @property (weak, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -19,6 +19,7 @@ UITextFieldDelegate>
 @property (strong, nonatomic) UITextField *currentField;
 
 //section
-@property (weak, nonatomic) IBOutlet SOTextField *patientNameField;
+@property (weak, nonatomic) IBOutlet SOTextField *medicineGenericName;
+@property (weak, nonatomic) IBOutlet SOTextField *medicineCommercialName;
 
 @end

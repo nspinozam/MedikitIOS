@@ -34,6 +34,8 @@
 		DB2F362B19ACDBCB00501B0C /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F362A19ACDBCB00501B0C /* Patient.m */; };
 		DB3F9FAF19A5099400819C52 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3F9FAE19A5099400819C52 /* TableViewController.m */; };
 		DB4397C219B610B5003606C1 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4397C119B610B5003606C1 /* Recipe.m */; };
+		F18B29C31A4C074A00AB1D33 /* Medicine.m in Sources */ = {isa = PBXBuildFile; fileRef = F18E19F01A47F5BB00DEFE72 /* Medicine.m */; };
+		F18B29C41A4C08FA00AB1D33 /* AddMedicineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F18E19F21A47F72000DEFE72 /* AddMedicineTableViewController.m */; };
 		F1EAC0E81A479A6C005C95CD /* RecipeListNameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAC0E71A479A6C005C95CD /* RecipeListNameTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,10 @@
 		DB4397C019B610B5003606C1 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipe.h; path = medikit/Recipe.h; sourceTree = SOURCE_ROOT; };
 		DB4397C119B610B5003606C1 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipe.m; path = medikit/Recipe.m; sourceTree = SOURCE_ROOT; };
 		F14FFC071A3BC2D900D5D578 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		F18E19EF1A47F5BB00DEFE72 /* Medicine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Medicine.h; path = medikit/Medicine.h; sourceTree = SOURCE_ROOT; };
+		F18E19F01A47F5BB00DEFE72 /* Medicine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Medicine.m; path = medikit/Medicine.m; sourceTree = SOURCE_ROOT; };
+		F18E19F11A47F72000DEFE72 /* AddMedicineTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddMedicineTableViewController.h; path = medikit/AddMedicineTableViewController.h; sourceTree = SOURCE_ROOT; };
+		F18E19F21A47F72000DEFE72 /* AddMedicineTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddMedicineTableViewController.m; path = medikit/AddMedicineTableViewController.m; sourceTree = SOURCE_ROOT; };
 		F1EAC0E61A479A6C005C95CD /* RecipeListNameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeListNameTableViewController.h; path = medikit/RecipeListNameTableViewController.h; sourceTree = SOURCE_ROOT; };
 		F1EAC0E71A479A6C005C95CD /* RecipeListNameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeListNameTableViewController.m; path = medikit/RecipeListNameTableViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -198,6 +204,8 @@
 				DB236CAB19AD35B1001AA006 /* AddPatientViewController.m */,
 				F1EAC0E61A479A6C005C95CD /* RecipeListNameTableViewController.h */,
 				F1EAC0E71A479A6C005C95CD /* RecipeListNameTableViewController.m */,
+				F18E19F11A47F72000DEFE72 /* AddMedicineTableViewController.h */,
+				F18E19F21A47F72000DEFE72 /* AddMedicineTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -206,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				1FFCDE1517BBF5B6006F7FB0 /* Medikit.xcdatamodeld */,
+				F18E19EF1A47F5BB00DEFE72 /* Medicine.h */,
+				F18E19F01A47F5BB00DEFE72 /* Medicine.m */,
 				DB4397C019B610B5003606C1 /* Recipe.h */,
 				DB4397C119B610B5003606C1 /* Recipe.m */,
 				DB2F362919ACDBCB00501B0C /* Patient.h */,
@@ -296,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18B29C31A4C074A00AB1D33 /* Medicine.m in Sources */,
 				DB3F9FAF19A5099400819C52 /* TableViewController.m in Sources */,
 				1F38DD8617BEC8F400C5CA2C /* SOTextField.m in Sources */,
 				1F38DD8717BEC8F400C5CA2C /* UIDetailedPickerView.m in Sources */,
@@ -310,6 +321,7 @@
 				1F4E54C117C3E41F00D4C39C /* Medikit.xcdatamodeld in Sources */,
 				DB2F362B19ACDBCB00501B0C /* Patient.m in Sources */,
 				1FE1D4AC17C579D100872792 /* FormatHelper.m in Sources */,
+				F18B29C41A4C08FA00AB1D33 /* AddMedicineTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

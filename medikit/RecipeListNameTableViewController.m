@@ -151,6 +151,19 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //code.tutsplus.com/tutorials/core-data-from-scratch-relationships-and-more-fetching--cms-21505
+    NSString *segueIdentifier = [segue identifier];
+    id destinationController = [segue destinationViewController];
+    
+    if ([segueIdentifier isEqualToString:@"addMedicine"])
+    {
+        [destinationController setFetchedResultsController:self.fetchedResultsController];
+        [destinationController setManagedObjectContext:self.managedObjectContext];
+    }
+}
+
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
