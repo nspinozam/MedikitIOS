@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    FieldForComercialName = 0,
-    FieldForGenericName=1
-} FieldForComponent;
+    FieldForComercialName = 1,
+    FieldForGenericName
+} FieldForMedicine;
 
 @interface MedicineTextField : UITextField
 
-@property (nonatomic, readwrite, assign) FieldForComponent field;
+@property (nonatomic, readwrite, assign) FieldForMedicine field;
 @property (nonatomic, readwrite, assign) IBOutlet UITextField *nextField;
 @property (nonatomic, readwrite, assign) IBOutlet UITextField *prevField;
 

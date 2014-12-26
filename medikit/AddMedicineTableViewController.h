@@ -12,7 +12,7 @@
 @class Recipe;
 @class MedicineTextField;
 
-@interface AddMedicineTableViewController : UITableViewController<UISplitViewControllerDelegate,
+@interface AddMedicineTableViewController : UITableViewController <UISplitViewControllerDelegate,
                                                                     UITextFieldDelegate>
 
 @property (weak, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -20,7 +20,7 @@
 @property (strong, nonatomic) Medicine *savedMedicine;
 @property (strong, nonatomic) UITextField *currentField;
 
-//section
+//Med  section
 @property (weak, nonatomic) IBOutlet MedicineTextField *medicineGenericName;
 @property (weak, nonatomic) IBOutlet MedicineTextField *medicineCommercialName;
 @property (strong, nonatomic) Recipe *recipe;

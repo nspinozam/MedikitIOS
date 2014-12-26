@@ -39,7 +39,7 @@ NSString * const EmptyNSStringM = @"";
     [self setFieldsEditable:YES];
     // Create a temporal object for storing the new recipe until it's saved
     Medicine *result = (Medicine *)[NSEntityDescription insertNewObjectForEntityForName:@"Medicine" inManagedObjectContext:_managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    //NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     //_tempMedicine = [[Medicine alloc] initWithEntity:entity
     //                insertIntoManagedObjectContext:nil];
     _tempMedicine=result;
@@ -91,6 +91,10 @@ NSString * const EmptyNSStringM = @"";
     }
     
 }
+-(void)textViewDidBeginEditing:(UITextField *)textField  {
+    NSLog(@"textfield began");
+    textField.delegate = self;
+}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -113,6 +117,55 @@ NSString * const EmptyNSStringM = @"";
         }
         [self checkSaveButtonShouldAppear];
     }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    UIToolbar *fieldNavigation = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"PrevButton", @"texts", nil) // @"Anterior"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(FieldNavigationPrev:)];
+    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"NextButton", @"texts", nil)
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(FieldNavigationNext:)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"DoneButton", @"texts", nil)
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(FieldNavigationDone:)];
+    
+    fieldNavigation.items = [NSArray arrayWithObjects:flexibleSpace, prevButton, nextButton, flexibleSpace, doneButton, nil];
+    textField.inputAccessoryView = fieldNavigation;
+    return YES;
+}
+#pragma mark - Field navigation methods
+
+- (IBAction)FieldNavigationPrev:(id)sender {
+    if (self.currentField)
+    {
+        [self.currentField resignFirstResponder];
+        UITextField *prevField = [(MedicineTextField *)self.currentField prevField];
+        [prevField becomeFirstResponder];
+        self.currentField = prevField;
+    }
+}
+
+- (IBAction)FieldNavigationNext:(id)sender {
+    if (self.currentField)
+    {
+        [self.currentField resignFirstResponder];
+        UITextField *nextField = [(MedicineTextField *)self.currentField nextField];
+        [nextField becomeFirstResponder];
+        self.currentField = nextField;
+    }
+}
+
+- (IBAction)FieldNavigationDone:(id)sender
+{
+    [self.currentField resignFirstResponder];
 }
 
 #pragma mark - Table view data source
