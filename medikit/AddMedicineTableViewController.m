@@ -8,7 +8,7 @@
 
 #import "AddMedicineTableViewController.h"
 #import "Medicine.h"
-#import "SOTextField.h"
+#import "MedicineTextField.h"
 
 @interface AddMedicineTableViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -24,20 +24,12 @@
 // Constants definition
 NSString * const EmptyNSStringM = @"";
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.medicineGenericName.field = FieldForGenericName;
-    self.medicineCommercialName.field = FieldForCommercialName;
+    self.medicineCommercialName.field = FieldForComercialName;
+    self.recipe = nil;
     
     self.dataEntered = NO;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
@@ -46,9 +38,14 @@ NSString * const EmptyNSStringM = @"";
     [self setSaveButtonEnabled:NO];
     [self setFieldsEditable:YES];
     // Create a temporal object for storing the new recipe until it's saved
+    Medicine *result = (Medicine *)[NSEntityDescription insertNewObjectForEntityForName:@"Medicine" inManagedObjectContext:_managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    _tempMedicine = [[Medicine alloc] initWithEntity:entity
-                    insertIntoManagedObjectContext:nil];}
+    //_tempMedicine = [[Medicine alloc] initWithEntity:entity
+    //                insertIntoManagedObjectContext:nil];
+    _tempMedicine=result;
+    //_tempMedicine.recipeMedicine=nil;
+
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -97,16 +94,19 @@ NSString * const EmptyNSStringM = @"";
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if ([textField isKindOfClass:[SOTextField class]])
+    if ([textField isKindOfClass:[MedicineTextField class]])
     {
-        SOTextField *detailedField = (SOTextField *)textField;
+        MedicineTextField *detailedField = (MedicineTextField *)textField;
         switch (detailedField.field) {
-            case FieldForCommercialName:
+            case FieldForComercialName:
                 _tempMedicine.comercialName = textField.text;
+                NSLog(@"Field Value comercial: %@", textField.text);
                 break;
             case FieldForGenericName:
             {
                 _tempMedicine.genericName = textField.text;
+                NSLog(@"Field Value generic: %@", textField.text);
+                break;
             }
             default:
                 break;
@@ -123,10 +123,10 @@ NSString * const EmptyNSStringM = @"";
     BOOL didResign = [textField resignFirstResponder];
     if (!didResign) return NO;
     
-    if ([textField isKindOfClass:[SOTextField class]])
+    if ([textField isKindOfClass:[MedicineTextField class]])
     {
         if (textField.returnKeyType == UIReturnKeyNext)
-            [[(SOTextField *)textField nextField] becomeFirstResponder];
+            [[(MedicineTextField *)textField nextField] becomeFirstResponder];
     }
     
     return YES;

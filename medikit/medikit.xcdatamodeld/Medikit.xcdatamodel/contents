@@ -3,7 +3,7 @@
     <entity name="Medicine" representedClassName="Medicine" syncable="YES">
         <attribute name="comercialName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genericName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="recipeMedicine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="medicineRecipe" inverseEntity="Recipe" syncable="YES"/>
+        <relationship name="recipeMedicine" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Recipe" inverseName="medicineRecipe" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="Patient" representedClassName="Patient" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -23,8 +23,8 @@
         <relationship name="patientParent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="recipes" inverseEntity="Patient" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Medicine" positionX="268" positionY="441" width="128" height="88"/>
         <element name="Patient" positionX="-191" positionY="198" width="128" height="73"/>
-        <element name="Recipe" positionX="160" positionY="192" width="128" height="28"/>
-        <element name="Medicine" positionX="-9" positionY="288" width="128" height="30"/>
+        <element name="Recipe" positionX="160" positionY="192" width="128" height="208"/>
     </elements>
 </model>

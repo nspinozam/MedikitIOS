@@ -434,13 +434,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre" minimumFontSize="17" id="9p7-UO-rWZ" customClass="SOTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre" minimumFontSize="17" id="9p7-UO-rWZ" customClass="MedicineTextField">
                                                     <rect key="frame" x="10" y="7" width="300" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Hj9-dl-5Dq" id="uy5-k8-JDx"/>
+                                                        <outlet property="nextField" destination="Otz-qQ-KPc" id="GTQ-qg-fTz"/>
+                                                        <outlet property="prevField" destination="Otz-qQ-KPc" id="8gQ-gE-NYh"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -453,7 +455,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre GenErico" minimumFontSize="17" id="Otz-qQ-KPc" customClass="SOTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre GenErico" minimumFontSize="17" id="Otz-qQ-KPc" customClass="MedicineTextField">
                                                     <rect key="frame" x="10" y="7" width="300" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
@@ -461,6 +463,8 @@
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Hj9-dl-5Dq" id="z8R-hc-K6Z"/>
+                                                        <outlet property="nextField" destination="9p7-UO-rWZ" id="kNJ-QN-91C"/>
+                                                        <outlet property="prevField" destination="9p7-UO-rWZ" id="INk-R9-rct"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

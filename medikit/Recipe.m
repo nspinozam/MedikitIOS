@@ -2,13 +2,13 @@
 //  Recipe.m
 //  medikit
 //
-//  Created by Estudiante on 02/09/14.
+//  Created by Nixon Espinoza on 12/25/14.
 //  Copyright (c) 2014 tec. All rights reserved.
 //
 
 #import "Recipe.h"
-#import "Patient.h"
 #import "Medicine.h"
+#import "Patient.h"
 
 
 @implementation Recipe
@@ -22,7 +22,7 @@
 @dynamic durationTotal;
 @dynamic durationType;
 @dynamic name;
-@dynamic patientParent;
 @dynamic medicineRecipe;
+@dynamic patientParent;
 
 @end

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class Medicine;
-@class SOTextField;
+@class Recipe;
+@class MedicineTextField;
 
 @interface AddMedicineTableViewController : UITableViewController<UISplitViewControllerDelegate,
                                                                     UITextFieldDelegate>
@@ -19,7 +21,8 @@
 @property (strong, nonatomic) UITextField *currentField;
 
 //section
-@property (weak, nonatomic) IBOutlet SOTextField *medicineGenericName;
-@property (weak, nonatomic) IBOutlet SOTextField *medicineCommercialName;
+@property (weak, nonatomic) IBOutlet MedicineTextField *medicineGenericName;
+@property (weak, nonatomic) IBOutlet MedicineTextField *medicineCommercialName;
+@property (strong, nonatomic) Recipe *recipe;
 
 @end

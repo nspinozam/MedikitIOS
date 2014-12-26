@@ -2,7 +2,7 @@
 //  Medicine.m
 //  medikit
 //
-//  Created by Nixon Espinoza on 12/22/14.
+//  Created by Nixon Espinoza on 12/25/14.
 //  Copyright (c) 2014 tec. All rights reserved.
 //
 
@@ -12,8 +12,8 @@
 
 @implementation Medicine
 
-@dynamic genericName;
 @dynamic comercialName;
+@dynamic genericName;
 @dynamic recipeMedicine;
 
 @end
