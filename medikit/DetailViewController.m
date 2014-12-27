@@ -319,8 +319,8 @@ NSString * const TitleForUnknownPickerViewRow = @"";
     
     if ([segueIdentifier isEqualToString:@"toMedicineList"])
     {
-        RecipeListNameTableViewController* rLNTVC = [segue destinationViewController];
-        rLNTVC.toMed = self.fetchedResultsController;
+        /*RecipeListNameTableViewController* rLNTVC = [segue destinationViewController];
+        rLNTVC.toMed = self.fetchedResultsController;*/
         //[destinationController setFetchedResultsController:self.fetchedResultsController];
         [destinationController setManagedObjectContext:self.managedObjectContext];
     }

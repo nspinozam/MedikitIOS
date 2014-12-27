@@ -16,11 +16,20 @@
 @implementation RecipeListNameTableViewController
 #define CELL_NAME_LABEL 1
 
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [NSFetchedResultsController deleteCacheWithName:@"Master"];
+    self.fetchedResultsController = nil;
+    
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        [NSFetchedResultsController deleteCacheWithName:@"Master"];
+        self.fetchedResultsController = nil;
     }
     return self;
 }
@@ -92,6 +101,12 @@
     _savedMedicine = object;
 }
 
+// Reload UI http://stackoverflow.com/questions/3747842/reload-uitableview-when-navigating-back
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData]; // to reload selected cell
+}
 
 #pragma mark - Fetched results controller
 
@@ -117,7 +132,7 @@
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -159,7 +174,7 @@
     
     if ([segueIdentifier isEqualToString:@"addMedicine"])
     {
-        [destinationController setFetchedResultsController:self.toMed];
+        [destinationController setFetchedResultsController:_fetchedResultsController];
         [destinationController setManagedObjectContext:self.managedObjectContext];
     }
 }

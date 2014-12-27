@@ -53,15 +53,27 @@ NSInteger const TagForFieldInCellM = 1;
     [self setSaveButtonEnabled:NO];
     [self setFieldsEditable:YES];
     // Create a temporal object for storing the new recipe until it's saved
-    Medicine *result = (Medicine *)[NSEntityDescription insertNewObjectForEntityForName:@"Medicine" inManagedObjectContext:_managedObjectContext];
-    _tempMedicine=result;
+    /*Medicine *result = (Medicine *)[NSEntityDescription insertNewObjectForEntityForName:@"Medicine" inManagedObjectContext:_managedObjectContext];
+    _tempMedicine=result;*/
+    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    NSEntityDescription *ent = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:[self managedObjectContext]];
+
+    _tempMedicine = [[Medicine alloc] initWithEntity:ent
+                    insertIntoManagedObjectContext:nil];
 
 }
 
 
 - (IBAction)saveRecipeAndReturnToView:(id)sender
 {
-    _savedMedicine = _tempMedicine;
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    NSEntityDescription *ent = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:[self managedObjectContext]];
+    Medicine *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[ent name]
+                                                              inManagedObjectContext:_managedObjectContext];
+    
+    _savedMedicine = newManagedObject;
+    //_savedMedicine = _tempMedicine;
     
     [self saveChangesAndReturnToView:sender];
 }
@@ -86,7 +98,7 @@ NSInteger const TagForFieldInCellM = 1;
     // Save the context.
     NSError *error = nil;
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    if (![context save:&error]) {
+    if (![_managedObjectContext save:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
