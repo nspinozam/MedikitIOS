@@ -23,6 +23,21 @@
 
 // Constants definition
 NSString * const EmptyNSStringM = @"";
+NSInteger const TagForFieldInCellM = 1;
+
+
+#pragma mark - Managing the detail item
+//Temp
+- (void)setSavedMedicine:(id)newSavedRecipe
+{
+    if (_savedMedicine != newSavedRecipe) {
+        _savedMedicine = newSavedRecipe;
+    }
+    
+    if (self.masterPopoverController != nil) {
+        [self.masterPopoverController dismissPopoverAnimated:YES];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -47,20 +62,20 @@ NSString * const EmptyNSStringM = @"";
 
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)saveRecipeAndReturnToView:(id)sender
 {
+    Medicine *result = (Medicine *)[NSEntityDescription insertNewObjectForEntityForName:@"Medicine" inManagedObjectContext:_managedObjectContext];
+    //NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    //_tempMedicine = [[Medicine alloc] initWithEntity:entity
+    //                insertIntoManagedObjectContext:nil];
+    //_tempMedicine=result;
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     Medicine *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name]
                                                               inManagedObjectContext:context];
     
-    _savedMedicine = newManagedObject;
+    _savedMedicine = result;
     
     [self saveChangesAndReturnToView:sender];
 }
@@ -91,25 +106,21 @@ NSString * const EmptyNSStringM = @"";
     }
     
 }
--(void)textViewDidBeginEditing:(UITextField *)textField  {
-    NSLog(@"textfield began");
-    textField.delegate = self;
-}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if ([textField isKindOfClass:[MedicineTextField class]])
     {
         MedicineTextField *detailedField = (MedicineTextField *)textField;
+
         switch (detailedField.field) {
             case FieldForComercialName:
                 _tempMedicine.comercialName = textField.text;
-                NSLog(@"Field Value comercial: %@", textField.text);
                 break;
             case FieldForGenericName:
             {
                 _tempMedicine.genericName = textField.text;
-                NSLog(@"Field Value generic: %@", textField.text);
+                NSLog(@"Seteo el generic con: %@",textField.text);
                 break;
             }
             default:
@@ -191,6 +202,8 @@ NSString * const EmptyNSStringM = @"";
     if (_tempMedicine)
     {
         if (_tempMedicine.genericName &&
+            ![_tempMedicine.genericName isEqualToString:EmptyNSStringM] &&
+            _tempMedicine.comercialName &&
             ![_tempMedicine.comercialName isEqualToString:EmptyNSStringM])
         {
             [self setSaveButtonEnabled:YES];
@@ -224,6 +237,14 @@ NSString * const EmptyNSStringM = @"";
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+#pragma mark - Table View events
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    UITextField *field = (UITextField *)[selectedCell viewWithTag:TagForFieldInCellM];
+    [field becomeFirstResponder];
 }
 
 

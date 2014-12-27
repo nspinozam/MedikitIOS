@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class Medicine;
+
+#import <CoreData/CoreData.h>
+
 @interface RecipeListNameTableViewController : UITableViewController
 
 @property (strong, nonatomic) Medicine *savedMedicine;

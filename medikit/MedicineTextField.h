@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    FieldForComercialName = 1,
+    FieldForComercialName = 0,
     FieldForGenericName
 } FieldForMedicine;
 

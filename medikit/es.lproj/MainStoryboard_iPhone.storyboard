@@ -438,29 +438,30 @@
                                                     <rect key="frame" x="10" y="7" width="300" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Hj9-dl-5Dq" id="uy5-k8-JDx"/>
-                                                        <outlet property="nextField" destination="ySm-W9-B7V" id="IcU-rl-WRr"/>
+                                                        <outlet property="nextField" destination="Ufw-rP-8g5" id="ZdT-Dv-gr9"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VGu-i9-aEm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hmn-vO-yDx">
                                         <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VGu-i9-aEm" id="zIR-TO-HJS">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hmn-vO-yDx" id="SHj-cZ-rzf">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre Generico" minimumFontSize="17" id="ySm-W9-B7V" customClass="MedicineTextField">
-                                                    <rect key="frame" x="10" y="8" width="300" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre GenErico" minimumFontSize="17" id="Ufw-rP-8g5" customClass="MedicineTextField">
+                                                    <rect key="frame" x="10" y="7" width="300" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <outlet property="prevField" destination="9p7-UO-rWZ" id="Sy0-1h-awR"/>
+                                                        <outlet property="delegate" destination="Hj9-dl-5Dq" id="KT3-io-ptD"/>
+                                                        <outlet property="prevField" destination="9p7-UO-rWZ" id="zcH-3d-aBd"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -476,7 +477,7 @@
                     <navigationItem key="navigationItem" id="vae-HJ-Ap7"/>
                     <connections>
                         <outlet property="medicineCommercialName" destination="9p7-UO-rWZ" id="F9n-Rg-vx7"/>
-                        <outlet property="medicineGenericName" destination="ySm-W9-B7V" id="epN-8h-eEX"/>
+                        <outlet property="medicineGenericName" destination="Ufw-rP-8g5" id="yTv-Zu-6IP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHb-z0-Hbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -490,6 +491,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Xug-4l-eFU"/>
+        <segue reference="oar-YL-TDH"/>
     </inferredMetricsTieBreakers>
 </document>

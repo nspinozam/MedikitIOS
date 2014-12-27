@@ -36,7 +36,7 @@
 		F16969181A4D05EF00124602 /* MedicineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F16969171A4D05EF00124602 /* MedicineTextField.m */; };
 		F169691B1A4D110900124602 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = F169691A1A4D110900124602 /* Recipe.m */; };
 		F169691E1A4D112B00124602 /* Medicine.m in Sources */ = {isa = PBXBuildFile; fileRef = F169691D1A4D112B00124602 /* Medicine.m */; };
-		F18B29C41A4C08FA00AB1D33 /* AddMedicineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F18E19F21A47F72000DEFE72 /* AddMedicineTableViewController.m */; };
+		F187611F1A4E06AD007EFB92 /* AddMedicineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F18E19F21A47F72000DEFE72 /* AddMedicineTableViewController.m */; };
 		F1EAC0E81A479A6C005C95CD /* RecipeListNameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAC0E71A479A6C005C95CD /* RecipeListNameTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -311,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F187611F1A4E06AD007EFB92 /* AddMedicineTableViewController.m in Sources */,
 				F169691E1A4D112B00124602 /* Medicine.m in Sources */,
 				DB3F9FAF19A5099400819C52 /* TableViewController.m in Sources */,
 				1F38DD8617BEC8F400C5CA2C /* SOTextField.m in Sources */,
@@ -327,7 +328,6 @@
 				1F4E54C117C3E41F00D4C39C /* Medikit.xcdatamodeld in Sources */,
 				DB2F362B19ACDBCB00501B0C /* Patient.m in Sources */,
 				1FE1D4AC17C579D100872792 /* FormatHelper.m in Sources */,
-				F18B29C41A4C08FA00AB1D33 /* AddMedicineTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
