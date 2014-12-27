@@ -159,7 +159,7 @@
     
     if ([segueIdentifier isEqualToString:@"addMedicine"])
     {
-        [destinationController setFetchedResultsController:self.fetchedResultsController];
+        [destinationController setFetchedResultsController:self.toMed];
         [destinationController setManagedObjectContext:self.managedObjectContext];
     }
 }

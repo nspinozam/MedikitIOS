@@ -126,7 +126,6 @@
         [destinationController setPatient:self.patient];
         [destinationController setFetchedResultsController:self.fetchedResultsController];
         [destinationController setManagedObjectContext:self.managedObjectContext];
-        NSLog(@"managed.. %@",self.managedObjectContext);
     }
 }
 

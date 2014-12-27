@@ -10,6 +10,7 @@
 @class Recipe;
 @class SOTextField;
 @class Patient;
+@class RecipeListNameTableViewController;
 
 typedef enum {
     ShowStateNew = 1,

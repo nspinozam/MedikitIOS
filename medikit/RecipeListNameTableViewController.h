@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class Medicine;
+@class AddMedicineTableViewController;
 
 #import <CoreData/CoreData.h>
 
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) Medicine *savedMedicine;
 
 @property (weak, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic) NSFetchedResultsController *toMed;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

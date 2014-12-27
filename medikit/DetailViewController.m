@@ -13,6 +13,7 @@
 #import "RecipeNotificationHelper.h"
 #import "FormatHelper.h"
 #import "Patient.h"
+#import "RecipeListNameTableViewController.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -318,7 +319,9 @@ NSString * const TitleForUnknownPickerViewRow = @"";
     
     if ([segueIdentifier isEqualToString:@"toMedicineList"])
     {
-        [destinationController setFetchedResultsController:self.fetchedResultsController];
+        RecipeListNameTableViewController* rLNTVC = [segue destinationViewController];
+        rLNTVC.toMed = self.fetchedResultsController;
+        //[destinationController setFetchedResultsController:self.fetchedResultsController];
         [destinationController setManagedObjectContext:self.managedObjectContext];
     }
 }

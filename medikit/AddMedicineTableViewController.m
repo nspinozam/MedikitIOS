@@ -54,28 +54,14 @@ NSInteger const TagForFieldInCellM = 1;
     [self setFieldsEditable:YES];
     // Create a temporal object for storing the new recipe until it's saved
     Medicine *result = (Medicine *)[NSEntityDescription insertNewObjectForEntityForName:@"Medicine" inManagedObjectContext:_managedObjectContext];
-    //NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    //_tempMedicine = [[Medicine alloc] initWithEntity:entity
-    //                insertIntoManagedObjectContext:nil];
     _tempMedicine=result;
-    //_tempMedicine.recipeMedicine=nil;
 
 }
 
 
 - (IBAction)saveRecipeAndReturnToView:(id)sender
 {
-    Medicine *result = (Medicine *)[NSEntityDescription insertNewObjectForEntityForName:@"Medicine" inManagedObjectContext:_managedObjectContext];
-    //NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    //_tempMedicine = [[Medicine alloc] initWithEntity:entity
-    //                insertIntoManagedObjectContext:nil];
-    //_tempMedicine=result;
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    Medicine *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name]
-                                                              inManagedObjectContext:context];
-    
-    _savedMedicine = result;
+    _savedMedicine = _tempMedicine;
     
     [self saveChangesAndReturnToView:sender];
 }
@@ -116,6 +102,7 @@ NSInteger const TagForFieldInCellM = 1;
         switch (detailedField.field) {
             case FieldForComercialName:
                 _tempMedicine.comercialName = textField.text;
+                 NSLog(@"Seteo el comercial con: %@",textField.text);
                 break;
             case FieldForGenericName:
             {
