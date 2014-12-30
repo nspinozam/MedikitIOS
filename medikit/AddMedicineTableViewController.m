@@ -114,12 +114,10 @@ NSInteger const TagForFieldInCellM = 1;
         switch (detailedField.field) {
             case FieldForComercialName:
                 _tempMedicine.comercialName = textField.text;
-                 NSLog(@"Seteo el comercial con: %@",textField.text);
                 break;
             case FieldForGenericName:
             {
                 _tempMedicine.genericName = textField.text;
-                NSLog(@"Seteo el generic con: %@",textField.text);
                 break;
             }
             default:

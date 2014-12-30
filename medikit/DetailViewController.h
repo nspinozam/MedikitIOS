@@ -18,10 +18,11 @@ typedef enum {
     ShowStateEdit = 3
 } ShowState;
 
+#import "RecipeListNameTableViewController.h"
 @interface DetailViewController : UITableViewController <UISplitViewControllerDelegate,
                                                             UITextFieldDelegate,
                                                             UIPickerViewDataSource,
-                                                            UIPickerViewDelegate>
+                                                            UIPickerViewDelegate, RecipeListNameTableViewControllerDelegate>
 
 @property (weak, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

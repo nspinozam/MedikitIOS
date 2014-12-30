@@ -14,6 +14,7 @@
 #import "FormatHelper.h"
 #import "Patient.h"
 #import "RecipeListNameTableViewController.h"
+#import "Medicine.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -71,6 +72,11 @@ NSString * const TitleForUnknownPickerViewRow = @"";
 // Synthesize properties
 @synthesize showState;
 @synthesize fetchedResultsController;
+
+-(void) returnedMedicine:(Medicine *)med
+{
+    NSLog(@"devolvió la med: %@", med.comercialName);
+}
 
 #pragma mark - Managing the detail item
 
@@ -322,6 +328,8 @@ NSString * const TitleForUnknownPickerViewRow = @"";
         /*RecipeListNameTableViewController* rLNTVC = [segue destinationViewController];
         rLNTVC.toMed = self.fetchedResultsController;*/
         //[destinationController setFetchedResultsController:self.fetchedResultsController];
+        RecipeListNameTableViewController* rLNTVC = [segue destinationViewController];
+        rLNTVC.delegate=self;
         [destinationController setManagedObjectContext:self.managedObjectContext];
     }
 }

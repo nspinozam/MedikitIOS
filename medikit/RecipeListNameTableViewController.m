@@ -14,6 +14,7 @@
 @end
 
 @implementation RecipeListNameTableViewController
+@synthesize delegate;
 #define CELL_NAME_LABEL 1
 
 
@@ -99,6 +100,7 @@
 {
     Medicine *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     _savedMedicine = object;
+    [self.delegate returnedMedicine:_savedMedicine];
 }
 
 // Reload UI http://stackoverflow.com/questions/3747842/reload-uitableview-when-navigating-back

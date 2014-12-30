@@ -13,7 +13,16 @@
 
 #import <CoreData/CoreData.h>
 
+
+@protocol RecipeListNameTableViewControllerDelegate <NSObject>
+- (void)returnedMedicine:(Medicine *)med;
+@end
+
 @interface RecipeListNameTableViewController : UITableViewController
+{
+}
+
+@property (assign) id <RecipeListNameTableViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) Medicine *savedMedicine;
 
