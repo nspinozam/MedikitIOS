@@ -75,7 +75,14 @@ NSString * const TitleForUnknownPickerViewRow = @"";
 
 -(void) returnedMedicine:(Medicine *)med
 {
-    NSLog(@"devolvió la med: %@", med.comercialName);
+    self.recipeNameField.text=[NSString stringWithFormat:@"%@/%@", med.genericName, med.comercialName ];
+    //_tempRecipe.medicineRecipe=med;
+    //Recipe *tt=_tempRecipe;
+    //_tempRecipe.medicineRecipe=med;
+    _tempRecipe.name=[NSString stringWithFormat:@"%@/%@", med.genericName, med.comercialName];
+    //[[tt valueForKey:@"medicineRecipe"] addObject:[tt.managedObjectContext objectWithID:[med objectID]]];
+    //NSLog(@"devolvió la med: %@", med.comercialName);
+    //NSLog(@"a versh: %@",tt.medicineRecipe.comercialName);
 }
 
 #pragma mark - Managing the detail item
